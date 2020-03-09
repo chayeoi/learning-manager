@@ -1,0 +1,10 @@
+{
+  "short_name": "학습 관리",
+  "name": "학습 관리 대시보드",
+  "icons": [
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
