@@ -1,9 +1,10 @@
 const theme = {
+  breakpoints: ['600px', '960px', '1280px', '1920px'],
   colors: {
-    text: '#000',
-    background: '#fff',
-    primary: '#07c',
-    secondary: '#30c',
+    text: '#000000',
+    background: '#ffffff',
+    primary: '#2188ff',
+    secondary: '#8a63d2',
     muted: '#f6f6f6',
   },
   fonts: {
@@ -11,7 +12,7 @@ const theme = {
     heading: 'inherit',
     monospace: 'Menlo, monospace',
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
+  fontSizes: [12, 14, 16, 18, 20, 24, 28, 32, 48, 64, 96],
   fontWeights: {
     body: 400,
     heading: 700,
@@ -25,9 +26,16 @@ const theme = {
     body: 'normal',
     caps: '0.2em',
   },
-  breakpoints: [],
-  useColorSchemeMediaQuery: true,
+  sizes: [],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  useColorSchemeMediaQuery: true,
+  variants: {
+    h1: {
+      color: 'primary',
+      fontSize: [5, 6, 7],
+      fontWeight: 'heading',
+    },
+  },
 }
 
 export default theme
