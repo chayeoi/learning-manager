@@ -1,8 +1,14 @@
 /** @jsx jsx */
 import { Global } from '@emotion/core'
+import {
+  BrowserRouter, Redirect, Route, Switch,
+} from 'react-router-dom'
 import { jsx, ThemeProvider } from 'theme-ui'
 
-import { AuthProvider, GlobalProvider } from '@/components'
+import { AuthProvider, GlobalProvider, PrivateRoute } from '@/components'
+import { routes } from '@/constants'
+import { Login } from '@/modules/auth/pages'
+import { Dashboard } from '@/modules/dashboard/pages'
 import { global, theme } from '@/styles'
 
 const App: React.FC = () => (
@@ -10,14 +16,13 @@ const App: React.FC = () => (
     <AuthProvider>
       <ThemeProvider theme={theme}>
         <Global styles={global} />
-        <h1
-          sx={{
-            fontSize: 32,
-            fontWeight: 700,
-          }}
-        >
-          학습 관리 대시보드
-        </h1>
+        <BrowserRouter>
+          <Switch>
+            <PrivateRoute exact path={routes.DASHBOARD} component={Dashboard} />
+            <Route exact path={routes.LOGIN} component={Login} />
+            <Redirect from={routes.ROOT} to={routes.DASHBOARD} />
+          </Switch>
+        </BrowserRouter>
       </ThemeProvider>
     </AuthProvider>
   </GlobalProvider>
