@@ -34,6 +34,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': ['error', { 'devDependencies': ['**/*.stories.tsx', '**/*.test.js'] }],
     'jsx-a11y/label-has-associated-control': 'off',
+    'max-len': ['error', { "ignoreTemplateLiterals": true, code: 120 }],
     'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['draft'] }],
     'no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }],
     'no-use-before-define': ['off'],
