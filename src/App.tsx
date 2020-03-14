@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { Global } from '@emotion/core'
-import {
-  BrowserRouter, Redirect, Route, Switch,
-} from 'react-router-dom'
+import { BrowserRouter, Redirect, Switch } from 'react-router-dom'
 import { jsx, ThemeProvider } from 'theme-ui'
 
-import { AuthProvider, GlobalProvider, PrivateRoute } from '@/components'
+import {
+  AuthProvider, GlobalProvider, PrivateRoute, PublicRoute,
+} from '@/components'
 import { routes } from '@/constants'
 import { Login } from '@/modules/auth/pages'
 import { Dashboard } from '@/modules/dashboard/pages'
@@ -19,7 +19,7 @@ const App: React.FC = () => (
         <BrowserRouter>
           <Switch>
             <PrivateRoute exact path={routes.DASHBOARD} component={Dashboard} />
-            <Route exact path={routes.LOGIN} component={Login} />
+            <PublicRoute exact path={routes.LOGIN} component={Login} />
             <Redirect from={routes.ROOT} to={routes.DASHBOARD} />
           </Switch>
         </BrowserRouter>
