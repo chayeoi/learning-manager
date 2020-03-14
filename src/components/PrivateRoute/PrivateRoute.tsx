@@ -1,6 +1,7 @@
 import React from 'react'
-import { Redirect, Route } from 'react-router-dom'
+import { Redirect, Route, useLocation } from 'react-router-dom'
 
+import { routes } from '@/constants'
 import { useSelector } from '@/hooks'
 import State from '@/types/State'
 import User from '@/types/User'
@@ -15,6 +16,8 @@ interface Props {
 const PrivateRoute: React.FC<Props> = ({ component: Component, ...otherProps }) => {
   const user = useSelector((state: State): User | null => state.user)
 
+  const location = useLocation()
+
   const isAuthenticated = Boolean(user)
 
   return (
@@ -23,7 +26,7 @@ const PrivateRoute: React.FC<Props> = ({ component: Component, ...otherProps }) 
       render={(props): React.ReactElement => (
         isAuthenticated
           ? <Component {...props} />
-          : <Redirect to="/login" />
+          : <Redirect to={{ pathname: routes.LOGIN, state: { from: location } }} />
       )}
     />
   )
