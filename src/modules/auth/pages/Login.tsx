@@ -4,8 +4,6 @@ import { Redirect } from 'react-router-dom'
 import { Container } from 'theme-ui'
 
 import { routes } from '@/constants'
-import { useDispatch } from '@/hooks'
-import * as actions from '@/store/actions'
 
 import { Layout } from '../components'
 
@@ -25,20 +23,14 @@ interface Props {
 const Login: React.FC<Props> = ({ location }) => {
   const [redirectToReferrer, setRedirectToReferrer] = useState(false)
 
-  const dispatch = useDispatch()
-
   const { from } = location.state || { from: { pathname: routes.ROOT } }
 
   const handleClick = async (): Promise<void> => {
-    try {
-      const provider = new firebase.auth.GoogleAuthProvider()
+    const provider = new firebase.auth.GoogleAuthProvider()
 
-      await firebase.auth().signInWithPopup(provider)
+    await firebase.auth().signInWithPopup(provider)
 
-      setRedirectToReferrer(true)
-    } catch (error) {
-      dispatch(actions.setError({ key: actions.LOGIN, error }))
-    }
+    setRedirectToReferrer(true)
   }
 
   return redirectToReferrer
